@@ -7,7 +7,7 @@
         <script type="text/javascript" src="config.json"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"></script>
-        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
         <style type='text/css'>
             body {
@@ -128,6 +128,9 @@
                 <br/>
                 <div id="pnlLoggedOut">
                     <span><b>Export</b> your playlists and tracks setup into a file by a single click. <b>Import</b> the file to restore your setup at any time.</span>
+                    <br/>
+                    <br/>
+                    <span><b>Howto:</b> Go to <a href="https://developer.spotify.com/dashboard">Spotify Dev Dashboard</a>, click create, enter name+desc, login page: <b>https://ralf.xx.yy/sb/login.html</b> and tick Web API. After that go to settings, and copy the client id into the json conf on the web host. All set.</span>
                     <br/>
                     <br/>
                     <button id="login" class="button-main button-big">Login with Spotify</button>
@@ -708,7 +711,7 @@ function loadPlaylistChunks(url, arr, callback) {
             if (!data) return;
             if ('items' in data) {
                 $.each(data.items, function (index, value) {
-                    if (value.tracks && value.tracks.href) {
+                    if (value && value.tracks && value.tracks.href) {
                         arr.push({
                             name: value.name,
                             href: value.tracks.href,
